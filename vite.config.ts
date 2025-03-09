@@ -24,9 +24,7 @@ export default defineConfig({
     strictPort: true,
     // Allow access from homeserver.local and any other hosts
     cors: true,
-    hmr: {
-      clientPort: 80
-    },
+    hmr: false, // Disable HMR completely
     watch: {
       usePolling: true
     },
@@ -34,8 +32,8 @@ export default defineConfig({
       // Allow serving files from one level up to the project root
       allow: ['..']
     },
-    // This is the key setting we need to add
-    origin: 'http://homeserver.local',
+    // If you're using a secure domain, origin should be https
+    origin: 'https://son.stigbosmans.be',
     // Explicitly allow homeserver.local and other hosts
     allowedHosts: [
       'homeserver.local',
@@ -43,7 +41,7 @@ export default defineConfig({
       '127.0.0.1',
       // Add any other domains you might access from
       '*.local',
-      '*.stigbosmans.be'
+      'son.stigbosmans.be'
     ]
   },
   preview: {
