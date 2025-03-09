@@ -14,8 +14,25 @@ if (typeof VITE_FOLDER_NAME === 'undefined' || VITE_FOLDER_NAME === '') {
   process.exit(1);
 }
 
-// https://vite.dev/config/
+// https://vitejs.dev/config/
 export default defineConfig({
   base: `/local/${VITE_FOLDER_NAME}/`,
   plugins: [react()],
+  server: {
+    host: '0.0.0.0',
+    port: 80,
+    strictPort: true,
+    // Allow access from homeserver.local and any other hosts
+    cors: true,
+    hmr: {
+      clientPort: 80
+    },
+    watch: {
+      usePolling: true
+    }
+  },
+  preview: {
+    host: '0.0.0.0',
+    port: 80
+  }
 });
