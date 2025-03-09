@@ -29,7 +29,21 @@ export default defineConfig({
     },
     watch: {
       usePolling: true
-    }
+    },
+    fs: {
+      // Allow serving files from one level up to the project root
+      allow: ['..']
+    },
+    // This is the key setting we need to add
+    origin: 'http://homeserver.local',
+    // Explicitly allow homeserver.local and other hosts
+    allowedHosts: [
+      'homeserver.local',
+      'localhost',
+      '127.0.0.1',
+      // Add any other domains you might access from
+      '*.local'
+    ]
   },
   preview: {
     host: '0.0.0.0',

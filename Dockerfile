@@ -12,5 +12,5 @@ COPY . .
 # Expose port 80
 EXPOSE 80
 
-# Start development server
-CMD ["npm", "run", "dev"] 
+# Start development server with disabled host checking
+CMD ["npm", "run", "dev", "--", "--host", "0.0.0.0", "--port", "80", "--no-strict-port", "--force"] 
