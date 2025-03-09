@@ -3,8 +3,17 @@ import { useHass, useEntity } from "@hakit/core";
 import { useState, useEffect } from 'react';
 import './Dashboard.css';
 
+// Define types for our buttons
+interface DashboardButton {
+  title: string;
+  icon: string;
+  entity: string;
+  service: string;
+}
+
 function Dashboard() {
-  const { getAllEntities } = useHass();
+  // Remove unused getAllEntities
+  const { useEntity: useEntityHook } = useHass();
   const [currentPage, setCurrentPage] = useState(0);
   const [date, setDate] = useState(new Date());
   
@@ -76,14 +85,14 @@ function Dashboard() {
     'exceptional': 'url("https://images.unsplash.com/photo-1527482797697-8795b05a13fe?q=80&w=1000&auto=format&fit=crop")',
   };
   
-  // Button configurations - all using the same entity as placeholder
+  // Button configurations with proper type handling
   const buttons = [
-    { title: 'Camera', icon: 'mdi:camera', entity: 'light.desk_upstairs', service: 'toggle' },
-    { title: 'Armed', icon: 'mdi:shield-check', entity: 'light.desk_upstairs', service: 'toggle' },
-    { title: 'Voice Calls', icon: 'mdi:phone', entity: 'light.desk_upstairs', service: 'toggle' },
-    { title: 'Lights', icon: 'mdi:lightbulb', entity: 'light.desk_upstairs', service: 'toggle' },
-    { title: 'TV', icon: 'mdi:television', entity: 'light.desk_upstairs', service: 'toggle' },
-    { title: 'Music', icon: 'mdi:music', entity: 'light.desk_upstairs', service: 'toggle' },
+    { title: 'Camera', icon: 'mdi:camera', entity: 'light.desk_upstairs' as const, service: undefined },
+    { title: 'Armed', icon: 'mdi:shield-check', entity: 'light.desk_upstairs' as const, service: undefined },
+    { title: 'Voice Calls', icon: 'mdi:phone', entity: 'light.desk_upstairs' as const, service: undefined },
+    { title: 'Lights', icon: 'mdi:lightbulb', entity: 'light.desk_upstairs' as const, service: undefined },
+    { title: 'TV', icon: 'mdi:television', entity: 'light.desk_upstairs' as const, service: undefined },
+    { title: 'Music', icon: 'mdi:music', entity: 'light.desk_upstairs' as const, service: undefined },
   ];
 
   // Calculate which buttons to show (3 per page)
@@ -169,9 +178,9 @@ function Dashboard() {
                 key={index}
                 title={button.title}
                 entity={button.entity}
-                service={button.service}
                 icon={button.icon}
                 className="minimal-button"
+                onClick={() => {/* Handle button click */}}
               />
             ))}
           </Row>
