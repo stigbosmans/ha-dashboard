@@ -1,0 +1,165 @@
+.dashboard {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #121212;
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  overflow: hidden;
+}
+
+.dashboard-top {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+  transition: background-image 1s ease;
+}
+
+.weather-background-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.85));
+  z-index: 0;
+}
+
+.dashboard-top::after {
+  content: '';
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 200px;
+  height: 200px;
+  background: linear-gradient(135deg, #ff8a00, #e52e71);
+  border-radius: 50%;
+  opacity: 0.7;
+  z-index: 1;
+}
+
+/* New custom info card */
+.info-card {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  position: relative;
+  z-index: 2;
+}
+
+.weather-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.weather-row i {
+  font-size: 2rem;
+  color: #ffcc00;
+  margin-right: 10px;
+}
+
+.temperature {
+  font-size: 1.8rem;
+  font-weight: 300;
+}
+
+.time-row {
+  font-size: 4.5rem;
+  font-weight: 300;
+  line-height: 1;
+  margin-bottom: 10px;
+}
+
+.date-row {
+  font-size: 1.2rem;
+  color: #ccc;
+  margin-bottom: 15px;
+}
+
+.weather-details {
+  display: flex;
+  gap: 15px;
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+.weather-detail {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.dashboard-bottom {
+  padding: 20px;
+  min-height: 150px;
+  background-color: rgba(18, 18, 18, 0.9);
+  position: relative;
+  z-index: 2;
+}
+
+.buttons-container {
+  margin-bottom: 20px;
+  touch-action: pan-x;
+}
+
+.minimal-button {
+  flex: 1;
+  background-color: rgba(50, 50, 50, 0.5) !important;
+  border-radius: 10px !important;
+  margin: 0 5px !important;
+  padding: 15px 10px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 80px !important;
+  transition: all 0.2s ease !important;
+  backdrop-filter: blur(5px) !important;
+}
+
+.minimal-button:active {
+  background-color: rgba(70, 70, 70, 0.7) !important;
+}
+
+/* Override ButtonCard styles */
+.minimal-button :global(.ha-card) {
+  background: transparent !important;
+  box-shadow: none !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+}
+
+.minimal-button :global(.ha-icon) {
+  font-size: 1.8rem !important;
+  margin-bottom: 5px !important;
+}
+
+.minimal-button :global(.name) {
+  font-size: 0.9rem !important;
+  font-weight: normal !important;
+}
+
+.pagination-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+}
+
+.dot.active {
+  background-color: rgba(255, 255, 255, 0.7);
+} 
