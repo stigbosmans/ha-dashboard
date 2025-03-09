@@ -42,7 +42,8 @@ export default defineConfig({
       'localhost',
       '127.0.0.1',
       // Add any other domains you might access from
-      '*.local'
+      '*.local',
+      '*.stigbosmans.be'
     ]
   },
   preview: {
